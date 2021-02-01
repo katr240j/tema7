@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <script>
+        let timer = 3;
+        let afstand = 100;
+        let co2UdledtKiloVedFlyRejse = timer * 109;
+        let tekst;
+        let resultat; // = `Ved ${timer} timers flyrejse har du udledt ${co2UdledtKiloVedFlyRejse} kg co2. ${tekst}`;
+
+
+        if (afstand < 100) {
+            resultat = "Tæt på Thunberg";
+        } else if (afstand < 200) {
+            resultat = "Ja ja, du behøver ikke at melde dig ud af Å!"
+        } else if (afstand < 600) {
+            resultat = "Det er godt for turismen i nordeuropa"
+        } else {
+            resultat = "Nå ja vi kan jo altid kolonisere en anden planet ..."
+        }
+
+        console.log(resultat);
+
+    </script>
+</body>
+
+</html>
