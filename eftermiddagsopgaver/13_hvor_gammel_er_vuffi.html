@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <p>Hvor gammel er din hund?</p>
+    <input type="text" id="hundeAlder">
+    <button>Klik her og udregn din hunds alder i menneskeår - gammel metode</button>
+    <script>
+        document.querySelector("button").addEventListener("click", buttonClicked);
+
+        function buttonClicked() {
+            let hundeAlder = document.querySelector("#hundeAlder").value;
+            let hundeAlderMenneskeArGammel = hundeAlder * 7;
+            let hundeAlderMenneskeArNy = 16 * Math.log(hundeAlder) + 31;
+            let resultat = `Hvis din hund er ${hundeAlder} år gammel, svarer det til ${hundeAlderMenneskeArNy} år i den nye metode og   ${hundeAlderMenneskeArGammel} år i den gamle metode`;
+            console.log(resultat);
+        }
+    </script>
+</body></html>
