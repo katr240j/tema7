@@ -42,6 +42,7 @@
 
         h1,
         h2,
+        h3,
         p {
             margin: 0px;
 
@@ -53,6 +54,10 @@
 
         h2 {
             font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 2.7rem;
         }
 
         p {
@@ -80,13 +85,30 @@
                 grid-gap: 20px;
             }
 
+            h1 {
+                font-size: 6rem;
+            }
+
+            h2 {
+                font-size: 4rem;
+            }
+
+            h3 {
+                font-size: 3.7rem;
+            }
+
+            p {
+                font-size: 3.1rem;
+            }
+        }
+
     </style>
 </head>
 
 
 <body>
     <header>
-        <h1> Titel</h1>
+        <h1>Titel</h1>
     </header>
     <main>
         <h2>Undertitel</h2>
@@ -112,7 +134,29 @@
             <p>This is the footer</p>
         </footer>
     </main>
-    <script></script>
+    <script>
+        const overskrift = document.querySelector("h1");
+        overskrift.textContent;
+        console.log(overskrift.textContent);
+
+        const undertitel = document.querySelector("h2");
+        undertitel.textContent;
+        console.log(undertitel.textContent);
+
+
+        const pic = document.querySelector("img");
+        pic.textContent;
+        console.log(pic);
+
+        const articleTitle = document.querySelector("h3");
+        articleTitle.textContent;
+        console.log(articleTitle.textContent);
+
+        const paragraph = document.querySelector("p");
+        paragraph.textContent;
+        console.log(paragraph.textContent);
+
+    </script>
 </body>
 
 </html>
