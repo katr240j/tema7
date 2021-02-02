@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ovelse 3</title>
+
+    <style>
+        * {
+            max-width: 100%;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        header {
+            text-align: center;
+            border-top: 3px;
+            border-bottom: 3px;
+            border-right: 0px;
+            border-left: 0px;
+            border-style: solid;
+        }
+
+        main {
+            margin: 0px 5% 0px 5%;
+        }
+
+        article {
+
+            border-style: solid;
+
+        }
+
+
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+
+
+
+        h1,
+        h2,
+        h3,
+        p,
+        b {
+            margin: 0px;
+
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 2.7rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+        }
+
+        b {
+            font-weight: 700;
+            font-size: 46px;
+        }
+
+        footer {
+            text-align: center;
+            border-top: 3px;
+            border-bottom: 3px;
+            border-right: 0px;
+            border-left: 0px;
+            border-style: solid;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 769px) {
+            article {
+                display: grid;
+            }
+
+            section {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 20px;
+            }
+
+            h1 {
+                font-size: 6rem;
+            }
+
+            h2 {
+                font-size: 4rem;
+            }
+
+            h3 {
+                font-size: 3.7rem;
+            }
+
+            p {
+                font-size: 3.1rem;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+
+            <article>
+
+                <img src="http://placeimg.com/400/300/people/sepia" alt="sepia_people_img">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maiores repudiandae, ducimus provident a accusamus ratione ab consequatur tempore. Ipsa, quos, possimus. Tenetur sequi facilis, est distinctio ipsam, ipsum neque.</p>
+            </article>
+            <article>
+
+                <img src="http://placeimg.com/400/300/nature/sepia" alt="sepia_nature_img">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maiores repudiandae, ducimus provident a accusamus ratione ab consequatur tempore. Ipsa, quos, possimus. Tenetur sequi facilis, est distinctio ipsam, ipsum neque.</p>
+
+
+            </article>
+        </section>
+
+        <footer>
+            <p>This is the footer</p>
+        </footer>
+    </main>
+    <script>
+        const pic1 = document.querySelector("article:nth-child(1) img");
+        console.log(pic1);
+
+        pic1.src = "http://placeimg.com/400/300/any/grayscale";
+
+        pic1.alt = "Det skal være sort og hvid billede";
+
+        const pic2 = document.querySelector("article:nth-child(2) img");
+        console.log(pic2);
+
+        pic2.src = "http://placeimg.com/400/300/animals";
+
+        pic2.alt = "Dyr";
+    </script>
+</body></html>
