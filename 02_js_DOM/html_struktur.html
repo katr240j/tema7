@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html struktur</title>
+
+    <style>
+        * {
+            max-width: 100%;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        header {
+            text-align: center;
+            border-top: 3px;
+            border-bottom: 3px;
+            border-right: 0px;
+            border-left: 0px;
+            border-style: solid;
+        }
+
+        main {
+            margin: 0px 5% 0px 5%;
+        }
+
+        article {
+
+            border-style: solid;
+
+        }
+
+
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+
+
+
+        h1,
+        h2,
+        p {
+            margin: 0px;
+
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            border-top: 3px;
+            border-bottom: 3px;
+            border-right: 0px;
+            border-left: 0px;
+            border-style: solid;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 769px) {
+            article {
+                display: grid;
+            }
+
+            section {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 20px;
+            }
+
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+
+            <article>
+
+                <img src="http://placeimg.com/400/300/people/sepia" alt="sepia_people_img">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maiores repudiandae, ducimus provident a accusamus ratione ab consequatur tempore. Ipsa, quos, possimus. Tenetur sequi facilis, est distinctio ipsam, ipsum neque.</p>
+            </article>
+            <article>
+
+                <img src="http://placeimg.com/400/300/nature/sepia" alt="sepia_nature_img">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maiores repudiandae, ducimus provident a accusamus ratione ab consequatur tempore. Ipsa, quos, possimus. Tenetur sequi facilis, est distinctio ipsam, ipsum neque.</p>
+
+
+            </article>
+        </section>
+
+        <footer>
+            <p>This is the footer</p>
+        </footer>
+    </main>
+    <script></script>
+</body>
+
+</html>
