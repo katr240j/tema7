@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 box shadow</title>
+
+    <style>
+        * {
+            max-width: 100%;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        header {
+            text-align: center;
+            border-top: 3px;
+            border-bottom: 3px;
+            border-right: 0px;
+            border-left: 0px;
+            border-style: solid;
+        }
+
+        main {
+            margin: 0px 5% 0px 5%;
+        }
+
+        article {
+
+            border-style: solid;
+
+        }
+
+
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+
+
+
+        h1,
+        h2,
+        h3,
+        p,
+        b {
+            margin: 0px;
+
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 2.7rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+        }
+
+        b {
+            font-weight: 700;
+            font-size: 46px;
+        }
+
+        footer {
+            text-align: center;
+            border-top: 3px;
+            border-bottom: 3px;
+            border-right: 0px;
+            border-left: 0px;
+            border-style: solid;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 769px) {
+            article {
+                display: grid;
+            }
+
+            section {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 20px;
+            }
+
+            h1 {
+                font-size: 6rem;
+            }
+
+            h2 {
+                font-size: 4rem;
+            }
+
+            h3 {
+                font-size: 3.7rem;
+            }
+
+            p {
+                font-size: 3.1rem;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+
+            <article class="article1">
+
+                <img src="http://placeimg.com/400/300/people/sepia" alt="sepia_people_img">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maiores repudiandae, ducimus provident a accusamus ratione ab consequatur tempore. Ipsa, quos, possimus. Tenetur sequi facilis, est distinctio ipsam, ipsum neque.</p>
+            </article>
+            <article class="article2">
+
+                <img src="http://placeimg.com/400/300/nature/sepia" alt="sepia_nature_img">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maiores repudiandae, ducimus provident a accusamus ratione ab consequatur tempore. Ipsa, quos, possimus. Tenetur sequi facilis, est distinctio ipsam, ipsum neque.</p>
+
+
+            </article>
+        </section>
+
+        <footer>
+            <p>This is the footer</p>
+        </footer>
+    </main>
+    <script>
+        console.log("pic1 valgt");
+        const pic1 = document.querySelector("article:nth-child(1) img");
+        console.log(pic1);
+
+
+        pic1.addEventListener("click", skiftBillede);
+
+        function skiftBillede() {
+            randomTal = Math.round(Math.random() * 10);
+
+            let newPic1 = document.querySelector("article:first-child img");
+
+            newPic1.src = "http://placeimg.com/400/300/animals" + randomTal;
+        }
+
+
+
+
+
+        //css med JS
+
+
+
+        const header = document.querySelector("header");
+        const footer = document.querySelector("footer");
+        const article1 = document.querySelector(".article1")
+        const article2 = document.querySelector(".article2")
+
+
+
+        header.style.boxShadow = "3px 67px 33px 0px rgba(0,0,0,0.75)";
+        console.log("boxshadow header");
+
+        footer.style.boxShadow = "3px 67px 33px 0px rgba(0,0,0,0.75)";
+        console.log("boxshadow footer");
+
+        article1.style.boxShadow = "3px 67px 33px 0px rgba(0,0,0,0.75)";
+        console.log("boxshadow article1");
+        article2.style.boxShadow = "3px 67px 33px 0px rgba(0,0,0,0.75)";
+        console.log("boxshadow article2");
+
+
+        header.addEventListener("mouseover", vækShadow);
+
+        function vækShadow() {
+            console.log("shadowvæk");
+            header.style.display = "none";
+        }
+        header.addEventListener("mouseout", shadow);
+
+        function shadow() {
+            console.log("shadow tilbage");
+            header.style.display = "show";
+        }
+    </script>
+</body></html>
