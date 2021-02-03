@@ -13,18 +13,13 @@
 
 
     <script>
-        const list = document.querySelector("#display");
+        const playliste = ["sang1", "sang2", "sang3", "sang4", "sang5", "sang6", "sang7", "sang8", "sang9", "sang10"];
 
-        const playlist = ["sang1", "sang2", "sang3", "sang4", "sang5", "sang6", "sang7", "sang8", "sang9", "sang10"];
 
-        playlist.forEach(visHvertElement);
 
-        function visHvertElement(element) {
-            console.log(element);
-            list.innerHTML = "";
-            list.innerHTML += element + ":" + element + "<li>";
 
-        }
+
+        playliste.forEach(nummer => display.innerHTML += "<li>" + nummer + "</li>");
 
     </script>
 </body>
