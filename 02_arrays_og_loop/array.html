@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 array</title>
+</head>
+
+<body>
+    <h1>Playlist</h1>
+    <ul id="display"></ul>
+
+
+    <script>
+        const list = document.querySelector("#display");
+
+        const playlist = ["sang1", "sang2", "sang3", "sang4", "sang5", "sang6", "sang7", "sang8", "sang9", "sang10"];
+
+        playlist.forEach(visHvertElement);
+
+        function visHvertElement(element) {
+            console.log(element);
+            list.innerHTML = "";
+            list.innerHTML += element + ":" + element + "<li>";
+
+        }
+
+    </script>
+</body>
+
+</html>
