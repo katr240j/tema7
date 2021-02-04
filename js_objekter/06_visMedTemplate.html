@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ovelse 6</title>
+
+</head>
+
+<body>
+    <section id="liste"></section>
+    <template>
+        <h3></h3>
+        <img src="" alt="">
+        <p class="type"></p>
+        <p class="sted"></p>
+    </template>
+    <script>
+        document.addEventListener("DOMContentLoaded", ready);
+
+
+
+        let dyrelist = [{
+                "navn": "Gris",
+                "type": "pattedyr",
+                "levested": "svinefarm",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+            },
+            {
+                "navn": "frø",
+                "type": "plantedyr",
+                "levested": "gras",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png"
+            },
+            {
+                "navn": "ræv",
+                "type": "hundedyr",
+                "levested": "skog",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png"
+            },
+            {
+                "navn": "sild",
+                "type": "fisk",
+                "levested": "sø",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
+            },
+            {
+                "navn": "krokodille",
+                "type": "fisk",
+                "levested": "vand",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
+            }
+
+        ];
+
+        function ready() {
+            console.log("DOM loaded");
+            const container = document.querySelector("#liste");
+            const dyreTemplate = document.querySelector("template");
+
+
+
+
+            dyrelist.forEach(dyr => {
+
+                let klon = dyreTemplate.cloneNode(true).content;
+
+                klon.querySelector("h3").textContent = dyr.navn;
+                klon.querySelector("img").src = dyr.billede;
+                klon.querySelector(".type").textContent = dyr.type;
+                klon.querySelector(".sted").textContent = dyr.levested;
+                container.appendChild(klon);
+
+            })
+
+
+
+        }
+
+        dyreTemplate.style.boxSizing = "borderBox";
+        dyreTemplate.style.border = "1px";
+    </script>
+</body></html>
+<!--billede:${dyr.billede}-->
