@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Grid placering</title>
     <style>
         * {
-            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        img {
-            max-width: 100%;
-        }
+
 
         main {
 
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             grid-gap: 1rem;
             align-items: flex-start;
 
@@ -32,6 +32,23 @@
             padding: 10px;
 
         }
+
+
+
+        img {
+            max-width: 100%;
+        }
+
+        h1,
+        footer {
+            text-align: center;
+        }
+
+        header,
+        footer {
+            padding 10px 0;
+        }
+
     </style>
 </head>
 
@@ -53,4 +70,6 @@
         <article>12 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, hic, eveniet! Optio cupiditate eligendi aliquam saepe temporibus eveniet odit autem nihil aut illo atque iste similique labore quasi, dolores perspiciatis.</article>
 
     </main>
-</body></html>
+</body>
+
+</html>
