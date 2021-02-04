@@ -80,6 +80,14 @@
             margin-top: 10px;
         }
 
+        .the_shadow {
+            box-shadow: 10px 10px 71px 18px rgba(0, 0, 0, 0.75);
+        }
+
+        article:nth-child(1) img {
+            cursor: pointer;
+        }
+
         @media (min-width: 769px) {
             article {
                 display: grid;
@@ -140,6 +148,7 @@
         </footer>
     </main>
     <script>
+        //!!!!!!!!!!!!!FARA YFIR ÞETTA VERKEFNI!!!!!!!!!!!!! myndir i ipad eða inna github
         console.log("pic1 valgt");
         const pic1 = document.querySelector("article:nth-child(1) img");
         console.log(pic1);
@@ -163,8 +172,8 @@
 
 
 
-        const header = document.querySelector("header");
-        const footer = document.querySelector("footer");
+        const header = document.querySelector("header h3");
+        const footer = document.querySelector("footer p ");
         const article1 = document.querySelector(".article1")
         const article2 = document.querySelector(".article2")
 
