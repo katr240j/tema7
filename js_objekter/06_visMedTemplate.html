@@ -5,17 +5,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ovelse 6</title>
+    <style>
+        .border {
 
+            box-sizing: content-box;
+            width: 300px;
+            margin: 10px;
+            padding: 10px;
+            border: 3px solid grey;
+            text-align: center;
+        }
+
+    </style>
 </head>
 
 <body>
     <section id="liste"></section>
+
     <template>
-        <h3></h3>
-        <img src="" alt="">
-        <p class="type"></p>
-        <p class="sted"></p>
+        <div class="border">
+            <h3></h3>
+            <img src="" alt="">
+            <p class="type"></p>
+            <p class="sted"></p>
+        </div>
     </template>
+
     <script>
         document.addEventListener("DOMContentLoaded", ready);
 
@@ -78,8 +93,8 @@
 
         }
 
-        dyreTemplate.style.boxSizing = "borderBox";
-        dyreTemplate.style.border = "1px";
     </script>
-</body></html>
+</body>
+
+</html>
 <!--billede:${dyr.billede}-->
