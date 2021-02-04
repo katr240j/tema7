@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ovelse 2</title>
+</head>
+
+<body>
+    <article id="dyr">
+        <p></p>
+        <img src="" alt="pig">
+    </article>
+    <script>
+        document.addEventListener("DOMContentLoaded", ready);
+
+        function ready() {
+            console.log("DOM loaded");
+            // console.log(`navn:${dyr.navn} type:${dyr.type} billede:${dyr.billede} levested:${dyr.levested}`);
+
+        }
+        const dyr = {
+            "navn": "Gris",
+            "type": "pattedyr",
+            "levested": "svinefarm",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+        }
+
+
+        const destination = document.querySelector("#dyr");
+        const vis = `navn:${dyr.navn} type:${dyr.type} levested:${dyr.levested}`;
+
+
+        destination.querySelector("p").textContent = vis;
+        destination.querySelector("img").src = dyr.billede;
+
+    </script>
+</body>
+
+</html>
+<!--billede:${dyr.billede}-->
