@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ovelse 3</title>
+</head>
+
+<body>
+    <article id="dyr">
+        <h3></h3>
+        <img src="" alt="pig">
+        <p class="first"></p>
+        <p class="second"></p>
+
+    </article>
+    <script>
+        document.addEventListener("DOMContentLoaded", ready);
+
+        function ready() {
+            console.log("DOM loaded");
+            // console.log(`navn:${dyr.navn} type:${dyr.type} billede:${dyr.billede} levested:${dyr.levested}`);
+
+        }
+        const dyr = {
+            "navn": "Gris",
+            "type": "pattedyr",
+            "levested": "svinefarm",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+        }
+
+
+        const destination = document.querySelector("#dyr");
+        const visnavn = `${dyr.navn} `;
+        const vistypen = `type:${dyr.type}`;
+        const vissted = `levested:${dyr.levested}`;
+
+
+
+        destination.querySelector("h3").textContent = visnavn;
+        destination.querySelector("img").src = dyr.billede;
+        destination.querySelector(".first").textContent = vistypen;
+        destination.querySelector(".second").textContent = vissted;
+    </script>
+</body></html>
+<!--billede:${dyr.billede}-->
