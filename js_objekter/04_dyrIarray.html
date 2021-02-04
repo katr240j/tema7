@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ovelse 2</title>
+</head>
+
+<body>
+    <article id="dyr">
+        <p></p>
+        <img src="" alt="pig">
+    </article>
+    <script>
+        document.addEventListener("DOMContentLoaded", ready);
+
+        function ready() {
+            console.log("DOM loaded");
+            // console.log(`navn:${dyr.navn} type:${dyr.type} billede:${dyr.billede} levested:${dyr.levested}`);
+            console.log(dyr);
+        }
+
+        let dyr = [{
+                "navn": "Gris",
+                "type": "pattedyr",
+                "levested": "svinefarm",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+            },
+            {
+                "navn": "frø",
+                "type": "plantedyr",
+                "levested": "gras",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png"
+            },
+            {
+                "navn": "ræv",
+                "type": "hundedyr",
+                "levested": "skog",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png"
+            },
+            {
+                "navn": "sild",
+                "type": "fisk",
+                "levested": "sø",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
+            },
+            {
+                "navn": "krokodille",
+                "type": "fisk",
+                "levested": "vand",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
+            }
+
+        ];
+    </script>
+</body></html>
+<!--billede:${dyr.billede}-->
