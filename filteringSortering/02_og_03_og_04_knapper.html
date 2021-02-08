@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>02 Knapper</title>
+    <title>02 03 04 Knapper</title>
     <style>
         html,
         body {
@@ -60,7 +60,6 @@
             font-size: 1rem;
             font-style: oblique;
         }
-
     </style>
 
 </head>
@@ -69,10 +68,10 @@
     <header>
         <h1>Persongalleri</h1>
         <nav>
-            <button data-troende="alle" class="valgt">Alle</button>
-            <button data-troende="ja">Troende</button>
-            <button data-troende="nej">Ikke troende</button>
-            <button data-troende="tvivler">Tvivler</button>
+            <button data-troende="alle" class="">Alle</button>
+            <button data-troende="ja" class="">Troende</button>
+            <button data-troende="nej" class="">Ikke troende</button>
+            <button data-troende="tvivler" class="">Tvivler</button>
         </nav>
     </header>
     <section id="liste"></section>
@@ -111,7 +110,6 @@
             visPersoner(); //kald funktionen visPersoner enter det nue filter er sat
             header.textContent = this.textContent;
             let knap = document.querySelector("button");
-
             knap.classList.add(".valgt");
         }
         async function loadJSON() {
@@ -145,8 +143,5 @@
                 }
             })
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
