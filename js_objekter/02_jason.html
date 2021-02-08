@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+    <style>
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        article {
+            border: 1px solid #333;
+            padding: 10px;
+            margin: 1em;
+        }
+
+        img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <section></section>
+
+    <template>
+        <article>
+            <h2 class="mærke"></h2>
+            <p class="model"></p>
+            <p class="motor"></p>
+            <p class="km"></p>
+            <ul class="udstyr"></ul>
+        </article>
+    </template>
+    <script>
+        //velur sectionið sem container fyrir ofan í body
+        let container = document.querySelector("section");
+        //velur template og skýrir það temp, template er í rauninni ósýnilegt í DOMinu og því ekki hægt að velja það og stílesara eða það er góð spurning
+        let temp = document.querySelector("template");
+
+        //aðgerð sem nær í upplýsingarnar sem skráðar eru í array lista í öðru skjali sem heitir biler.json
+        async function hentdata() {
+            // býr til respons sem merkingur á því að bíða eftir og ná í upplýsingarnar í json skjalinu
+            const respons = await fetch("biler.json");
+            //býr til json merkingu, úr respons merkingur sem er þá að búa til styttingarorð fyrir að ná í upplýsingarnar úr json skjalinu
+            const json = await respons.json();
+            // að lokum segjum við tölvunni að sýna upplýsingarnar en hvar? það kemur næst
+            vis(json);
+        }
+//hérna kemur aðgerðin þar sem ég segji tölvunni hvernig hún eigi að sýna upplýsingarnar sem hún náði í úr json skjalinu
+        function vis(data) {
+            //fer í gegnum upplýsingarnar og sýnir eftir pöntunum
+            //løb igennem array af bil objekter
+            //fyrir hvern bíl, eða þar að segja hvern hlut í skjalinu, listanum
+            data.forEach(bil => {
+                //þá þurfum við fyrst að klóna temp sem er template tagið í html. s.s. taka tagið í sundur og greina það
+                let klon = temp.cloneNode(true).content;
+                //þar sem ég hef skýrt klónunina á template taginu klon þá vel ég það og h2 tagið þar sem að ég vil að talvan sýni hlutinn .mærke í h2 taginu
+                klon.querySelector("h2").textContent = bil.mærke;
+                klon.querySelector(".model").textContent = "Model: " + bil.model;
+                klon.querySelector(".motor").textContent = "Motor: " + bil.motor;
+                klon.querySelector(".km").textContent = "Km: " + bil.km;
+                //løb igennem udstyr array inde i hvert bil objekt
+                //í listuanum þar sem allir flokkarnar eru kallaði bil sem við skýrðum fyrr þá viljum við taka udstyr fyrir nuna þannig við veljum classið udstyr sem er lista tag í htmlinu, ul. fyrir hvert udstyr á listanum gefum við samheitið ting eins og við gerðum með json listann og gáfum öllum flokkunum nafnið bil, bíll.
+                bil.udstyr.forEach(ting => {
+                    //búum til merkinguna li, og búum til punkta tag
+                    const li = document.createElement("li");
+                    // punkta tagið sem við bjuggum til á núna að sýna ting, sem er samheitið yfir allt udstyr á listanum
+                    li.textContent = ting;
+                    //klon stendur fyrir klónunina á template html taginu. þannig að við erum að taka listann í sundur og velja tagið á ul lista taginu því þangað viljum við setja li, lista punkta tagið sem við bjuggum til hérna í JS.
+                    klon.querySelector(".udstyr").appendChild(li);
+                })
+                //að lokum lokum við template klónuninni, setjum aftur template tagið saman sem er í rauninni staðsett í section appendChild aðferðin bætir hnút sem síðasta hnút barnsins. þar að segja velur síðasta dótið í container taginu eða þar að segja section taginu þar sem container er í rauninni merkingin á section svo við þurfum ekki alltaf að velja euselector og #section. sem gætu verið fleiri í stærra skjali.
+                container.appendChild(klon);
+            })
+        }
+// síðast þá segjum við tölvunni að ná gera aðgerðina sem við kóðuðum inn hér fyrir ofan.
+        hentdata();
+    </script>
+</body></html>
