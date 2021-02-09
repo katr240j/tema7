@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babushka</title>
+    <style>
+        html,
+        body {
+            background-color: #5d0707;
+            font-family: sans-serif;
+            font-size: 20px;
+            text-align: center;
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0px;
+        }
+
+        header {
+            background-color: #5d0707;
+            margin: 0px 0px 2rem 0px;
+            padding-top: 1rem;
+            padding-bottom: 5rem;
+
+        }
+
+        header h1 {
+            padding: 1em;
+            border: 30px;
+            border-style: double;
+            border-color: #d3bd8d;
+        }
+
+        nav {
+            text-align: center;
+            letter-spacing: 1rem;
+
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 2.3rem;
+            background-color: #5d0707;
+            border-color: #d3bd8d;
+            color: #d3bd8d;
+            border-style: solid;
+
+        }
+
+        .valgt {
+            background-color: #d3bd8d;
+            color: #5d0707;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #liste {
+
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(750px, 1fr));
+            grid-gap: 4em;
+            margin: 5rem 8rem;
+        }
+
+        .menu_liste {
+            padding: 1em;
+            border: 30px;
+            border-style: double;
+
+            border-color: #d3bd8d;
+
+        }
+
+        footer {
+            background-color: #050824;
+            color: antiquewhite;
+            margin: 2rem 0rem 0rem 0rem;
+            padding-top: 5rem;
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 5rem;
+            /*            font-style: oblique;*/
+            text-transform: uppercase;
+            margin: 10px 30px;
+            color: #d3bd8d;
+        }
+
+        h2 {
+            font-size: 2.7rem;
+            text-transform: uppercase;
+            color: #d3bd8d;
+        }
+
+        h3 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            color: #d3bd8d;
+        }
+
+
+        p {
+            font-size: 1.5rem;
+            font-style: oblique;
+            color: #d3bd8d;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Babushka</h1>
+    </header>
+    <div class="navn_af_menu">
+        <h2>Menu</h2>
+    </div>
+    <nav>
+        <button data-kategori="alle" class="valgt">Alle</button>
+        <button data-kategori="forretter" class="">Forreter</button>
+        <button data-kategori="hovedretter" class="">Hovedretter</button>
+        <button data-kategori="desserter" class="">Desserter</button>
+        <button data-kategori="drikkevarer" class="">Drikkevarer</button>
+    </nav>
+
+    <section id="liste"></section>
+
+    <template>
+        <article class="menu_liste">
+            <img src="" alt="" class="billede">
+            <h2 class="navn"></h2>
+            <p class="kortbeskrivelse"></p>
+            <p class="pris"></p>
+        </article>
+    </template>
+    <!--
+billede: ["600ec0d7ef2e8a1b00024655"]
+id: 17
+kategori: "forretter"
+kortbeskrivelse: "Baltisk bondesuppe - en solid starter"
+langbeskrivelse: "Baltisk bondesuppe er en solid starter. Godt til dig, der skal drikke godt igennem under måltidet. Suppen består af ged, grønt og masser af løg."
+navn: "Baltisk bondesuppe"
+oprindelsesregion: "Baltikum "
+pris: 79
+_id: "600ec071ef2e8a1b00024613"
+-->
+    <footer>
+        <h2>Adresse:</h2>
+        <h3>Russlandsgade 12</h3>
+        <h3>1234 København </h3>
+    </footer>
+
+    <script>
+        const header = document.querySelector(".navn_af_menu h2 ");
+        const medieurl = "https://babushka-dd8a.restdb.io/media/";
+        const myHeaders = {
+
+            "x-apikey": "600ec2fb1346a1524ff12de4"
+        }
+        document.addEventListener("DOMContentLoaded", start)
+        let retter;
+        let filter = "alle";
+
+
+        // første funktion der kaldes efter DOM er loaded
+        function start() {
+            const filterKnapper = document.querySelectorAll("nav button");
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerRetter));
+            loadJSON();
+        }
+
+        function filtrerRetter() {
+            filter = this.dataset.kategori; //sæt variabel "filter" til værdien af data-kategori på den knap der er klikket på.
+            visRetter(); //kald funktionen visRetter enter det nue filter er sat
+            header.textContent = this.textContent;
+            document.querySelector(".valgt").classList.remove("valgt"); //fjern klassen valgt fra den knap
+            this.classList.add("valgt"); //marker den knap der er klikket på
+            visRetter(); //kald funktionen visRetter efter det nye file er sat
+            header.textContent = this.textContent;
+        }
+        async function loadJSON() {
+            const JSONData = await fetch("https://babushka-dd8a.restdb.io/rest/menu", {
+                headers: myHeaders
+            });
+            retter = await JSONData.json();
+            console.log("Retter", retter);
+            visRetter();
+        }
+
+        //funktion der viser kategori i liste view
+        function visRetter() {
+
+            const dest = document.querySelector("#liste"); // container til articles med en kategori
+            const skabelon = document.querySelector("template").content; // select indhold af html skabelon (article)
+
+            dest.textContent = ""; ///ryd container inden ny loop
+
+            retter.forEach(retter => {
+                console.log("Kategori", retter.kategori);
+
+                // loop igennem json (kategori)
+                //Tjek hvilken tro kategori har og samenlign med aktuelt filter eller vis alle, hvis filter eller vis alle, hvis filter har værdien "alle"
+                if (filter == retter.kategori || filter == "alle") {
+                    const klon = skabelon.cloneNode(true);
+                    klon.querySelector(".navn").textContent = retter.navn;
+
+                    klon.querySelector(".billede").src = medieurl + retter.billede;
+                    klon.querySelector(".pris").textContent = retter.pris + " -kr.";
+                    klon.querySelector(".kortbeskrivelse").textContent = retter.kortbeskrivelse;
+                    dest.appendChild(klon);
+                }
+            })
+        }
+    </script>
+</body></html>
