@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalje view</title>
+    <style>
+        html,
+        body {
+            background-color: #5d0707;
+            font-family: sans-serif;
+            font-size: 10px;
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0px;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 2.3rem;
+            background-color: #5d0707;
+            border-color: #d3bd8d;
+            color: #d3bd8d;
+            border-style: solid;
+            margin-top: 1rem;
+
+        }
+
+
+
+
+
+        article {
+            text-align: center;
+            padding: 1em;
+
+        }
+
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 5rem;
+            text-transform: uppercase;
+            margin: 10px 30px;
+            color: #d3bd8d;
+        }
+
+        h2 {
+            font-size: 2.7rem;
+            text-transform: uppercase;
+            color: #d3bd8d;
+        }
+
+        h3 {
+            font-size: 2.2em;
+            text-transform: uppercase;
+            color: #d3bd8d;
+        }
+
+
+        p {
+            font-size: 3.5em;
+            font-style: oblique;
+            color: #d3bd8d;
+        }
+
+        #single_view {
+            box-sizing: border-box;
+            padding: 2em;
+            border: 15px;
+            height: auto;
+
+            border-style: double;
+            border-color: #d3bd8d;
+        }
+
+        @media (min-width: 1000px) {
+            html {
+                font-size: 20px;
+            }
+
+            #single_view {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 5px;
+                padding: 1em;
+                border: 30px;
+                height: auto;
+
+                border-style: double;
+                border-color: #d3bd8d;
+            }
+
+            button:hover {
+                cursor: pointer;
+                background-color: #d3bd8d;
+                color: #5d0707;
+            }
+
+        }
+
+        section {
+            width: 90vw;
+            height: auto;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 5rem;
+        }
+
+        p {
+            font-size: 2.3rem;
+        }
+        }
+
+    </style>
+</head>
+<section id="single_view">
+    <article class="col">
+
+        <h2 class="navn"></h2>
+        <p class="langbeskrivelse"></p>
+        <p class="pris"></p>
+    </article>
+    <article class="col">
+        <img src="" alt="" class="billede">
+        <button>Tilbage til Menu</button>
+    </article>
+</section>
+
+<body>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+
+        const medieurl = "https://babushka-dd8a.restdb.io/media/";
+        let retter;
+        const myHeaders = {
+
+            "x-apikey": "600ec2fb1346a1524ff12de4"
+        }
+
+        console.log("ID", id);
+        document.addEventListener("DOMContentLoaded", loadJSON);
+
+        async function loadJSON() {
+            const JSONData = await fetch(`https://babushka-dd8a.restdb.io/rest/menu/${id}`, {
+                headers: myHeaders
+            });
+
+            retter = await JSONData.json();
+
+            console.log("Retter", retter);
+            visRetter(retter);
+        }
+
+        function visRetter() {
+            document.querySelector(".navn").textContent = retter.navn;
+            document.querySelector(".billede").src = medieurl + retter.billede;
+            document.querySelector(".langbeskrivelse").textContent = retter.langbeskrivelse;
+            document.querySelector(".pris").textContent = retter.pris + " -kr.";
+            document.querySelector("button").addEventListener("click", tilbageTilMenu);
+        }
+
+        function tilbageTilMenu() {
+            history.back();
+        }
+
+    </script>
+</body>
+
+</html>

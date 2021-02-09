@@ -34,7 +34,8 @@
 
         nav {
             text-align: center;
-            letter-spacing: 1rem;
+
+
 
         }
 
@@ -45,7 +46,11 @@
             border-color: #d3bd8d;
             color: #d3bd8d;
             border-style: solid;
+            margin: 0.4rem;
+        }
 
+        button:hover {
+            cursor: pointer;
         }
 
         .valgt {
@@ -69,7 +74,6 @@
             padding: 1em;
             border: 30px;
             border-style: double;
-
             border-color: #d3bd8d;
 
         }
@@ -84,7 +88,6 @@
 
         h1 {
             font-size: 5rem;
-            /*            font-style: oblique;*/
             text-transform: uppercase;
             margin: 10px 30px;
             color: #d3bd8d;
@@ -108,6 +111,7 @@
             font-style: oblique;
             color: #d3bd8d;
         }
+
     </style>
 
 </head>
@@ -129,25 +133,18 @@
 
     <section id="liste"></section>
 
-    <template>
+    <template class="template1">
         <article class="menu_liste">
             <img src="" alt="" class="billede">
             <h2 class="navn"></h2>
             <p class="kortbeskrivelse"></p>
             <p class="pris"></p>
+            <button class="detalje">Mere om retten</button>
+
         </article>
     </template>
-    <!--
-billede: ["600ec0d7ef2e8a1b00024655"]
-id: 17
-kategori: "forretter"
-kortbeskrivelse: "Baltisk bondesuppe - en solid starter"
-langbeskrivelse: "Baltisk bondesuppe er en solid starter. Godt til dig, der skal drikke godt igennem under måltidet. Suppen består af ged, grønt og masser af løg."
-navn: "Baltisk bondesuppe"
-oprindelsesregion: "Baltikum "
-pris: 79
-_id: "600ec071ef2e8a1b00024613"
--->
+
+
     <footer>
         <h2>Adresse:</h2>
         <h3>Russlandsgade 12</h3>
@@ -195,7 +192,7 @@ _id: "600ec071ef2e8a1b00024613"
         function visRetter() {
 
             const dest = document.querySelector("#liste"); // container til articles med en kategori
-            const skabelon = document.querySelector("template").content; // select indhold af html skabelon (article)
+            const skabelon = document.querySelector(".template1").content; // select indhold af html skabelon (article)
 
             dest.textContent = ""; ///ryd container inden ny loop
 
@@ -211,9 +208,18 @@ _id: "600ec071ef2e8a1b00024613"
                     klon.querySelector(".billede").src = medieurl + retter.billede;
                     klon.querySelector(".pris").textContent = retter.pris + " -kr.";
                     klon.querySelector(".kortbeskrivelse").textContent = retter.kortbeskrivelse;
+                    klon.querySelector(".detalje").addEventListener("click", () => visDetaljer(retter));
+
                     dest.appendChild(klon);
                 }
             })
         }
+
+        function visDetaljer(hvad) {
+            location.href = `03_detalje.html?id=${hvad._id}`;
+        }
+
     </script>
-</body></html>
+</body>
+
+</html>
